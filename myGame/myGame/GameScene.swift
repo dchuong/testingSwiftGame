@@ -36,6 +36,16 @@ class GameScene: SKScene {
         // add the player
         player = Player(texture: nil, color: UIColor.redColor(), size: CGSizeMake(40, 40))
         player.addPhysicsBody()
+        var leftEye: SKSpriteNode = SKSpriteNode(color: UIColor.whiteColor(), size: CGSizeMake(5, 5))
+        leftEye.position = CGPointMake(-10, 8)
+        var rightEye: SKSpriteNode = SKSpriteNode(color: UIColor.whiteColor(), size: CGSizeMake(5, 5))
+        rightEye.position = CGPointMake(10, 8)
+        var mouth: SKSpriteNode = SKSpriteNode(color: UIColor.brownColor(), size: CGSizeMake(30, 5))
+        mouth.position = CGPointMake(0, -10)
+        player.addChild(leftEye)
+        player.addChild(rightEye)
+        player.addChild(mouth)
+
         world.addChild(player)
     }
     
