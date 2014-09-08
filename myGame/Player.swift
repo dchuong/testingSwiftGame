@@ -35,4 +35,14 @@ class Player : SKSpriteNode {
         var right = SKAction.moveByX(10, y: 0, duration: 0)
         self.runAction(right)
     }
+    
+    func jump () {
+        self.physicsBody.applyImpulse(CGVector(0,40))
+    }
+    
+    func start () {
+        var moveRight: SKAction = SKAction.moveByX(1.0, y: 0, duration: 0.03)
+        var repeatMoveRight:SKAction = SKAction.repeatActionForever(moveRight)
+        self.runAction(repeatMoveRight)
+    }
 }

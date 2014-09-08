@@ -14,6 +14,8 @@ class GameScene: SKScene {
     
     var player:Player!
     var world: SKNode!
+    var isStarted: Bool! = false
+    var isGameOver: Bool! = false
     
     override func didMoveToView(view: SKView) {
         let groundSize:Int = 50
@@ -34,6 +36,15 @@ class GameScene: SKScene {
         world.addChild(ground)
         
         // add the player
+        player = createPlayer()
+        world.addChild(player)
+    }
+    
+    override func didSimulatePhysics() {
+        centerTheNode(self.player)
+    }
+    
+    func createPlayer() -> Player {
         player = Player(texture: nil, color: UIColor.redColor(), size: CGSizeMake(40, 40))
         player.addPhysicsBody()
         var leftEye: SKSpriteNode = SKSpriteNode(color: UIColor.whiteColor(), size: CGSizeMake(5, 5))
@@ -45,24 +56,34 @@ class GameScene: SKScene {
         player.addChild(leftEye)
         player.addChild(rightEye)
         player.addChild(mouth)
+        
+        return player
 
-        world.addChild(player)
     }
-    
-    override func didSimulatePhysics() {
-        centerTheNode(self.player)
-    }
-    
     func centerTheNode(node: SKNode) {
         var positionInScene: CGPoint = self.convertPoint(node.position, fromNode: node.parent)
         self.world.position = CGPointMake(self.world.position.x - positionInScene.x, self.world.position.y - positionInScene.y)
     }
 
+    func start () {
+        self.isStarted = true
+        player.start()
+    }
+    
+    func clear() {
+        
+    }
+    
+    func gameOver() {
+        
+    }
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
-        
+        if (!self.isStarted) {
+            start()
+        }
         //type case to a player
-        player.walkRight()
+        player.jump()
     }
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */

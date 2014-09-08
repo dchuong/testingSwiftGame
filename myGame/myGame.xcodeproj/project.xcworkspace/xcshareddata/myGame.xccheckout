@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>53FB56D9-B49E-4E8F-82E1-208E3CE6F1C9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>myGame</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AC4CF2F1A777246ED487627F213083918DF362FB</key>
+		<string>https://github.com/dchuong/testingSwiftGame.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>myGame/myGame.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AC4CF2F1A777246ED487627F213083918DF362FB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dchuong/testingSwiftGame.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AC4CF2F1A777246ED487627F213083918DF362FB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AC4CF2F1A777246ED487627F213083918DF362FB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>testingSwiftGame</string>
+		</dict>
+	</array>
+</dict>
+</plist>
