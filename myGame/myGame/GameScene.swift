@@ -16,6 +16,7 @@ class GameScene: SKScene {
     var world: SKNode!
     var isStarted: Bool! = false
     var isGameOver: Bool! = false
+    var generator: WorldGenerator!
     
     override func didMoveToView(view: SKView) {
         let groundSize:Int = 50
@@ -26,15 +27,11 @@ class GameScene: SKScene {
         self.world = SKNode()
         println(self.world.position.x)
         self.addChild(world)
-        
-        var ground:SKSpriteNode = SKSpriteNode(color: UIColor.greenColor(), size: CGSizeMake(self.frame.size.width, CGFloat(groundSize)))
-        // go to bottom of the screen and add the ground
-        ground.position = CGPointMake(0, -self.frame.size.height/2 + ground.frame.size.height/2)
-        // adding physics
-        ground.physicsBody = SKPhysicsBody(rectangleOfSize: ground.size)
-        ground.physicsBody.dynamic = false
-        world.addChild(ground)
-        
+    
+        self.generator = WorldGenerator(generateWorld: world)
+        self.addChild(generator)
+        self.generator.populate()
+
         // add the player
         player = createPlayer()
         world.addChild(player)
@@ -66,25 +63,33 @@ class GameScene: SKScene {
     }
 
     func start () {
+        println("start")
         self.isStarted = true
         player.start()
     }
     
     func clear() {
+        println("clear")
         
     }
     
     func gameOver() {
-        
+        println("game over")
     }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
         if (!self.isStarted) {
             start()
         }
-        //type case to a player
-        player.jump()
+        else if (self.isGameOver == true){
+            clear()
+        }
+        else {
+            player.jump()
+        }
     }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }

@@ -26,13 +26,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myGame/GameScene.swift"
-            timestampString = "431901787.503712"
+            timestampString = "431910060.42657"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "touchesBegan(_:withEvent:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "didMoveToView(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myGame.GameScene.didMoveToView (myGame.GameScene)(ObjectiveC.SKView) -&gt; ()"
+                  moduleName = "myGame"
+                  urlString = "file:///Users/derrick/GitHub/testingSwiftGame/myGame/myGame/GameScene.swift"
+                  timestampString = "431906631.200726"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "1026">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "myGame.GameScene.didMoveToView (myGame.GameScene)(ObjectiveC.SKView) -&gt; ()"
+                  moduleName = "myGame"
+                  urlString = "file:///Users/derrick/GitHub/testingSwiftGame/myGame/myGame/GameScene.swift"
+                  timestampString = "431906631.200974"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "1088">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
