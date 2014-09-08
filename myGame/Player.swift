@@ -18,11 +18,6 @@ class Player : SKSpriteNode {
         name = "player"
     }
 
-    /*
-    convenience init(color: UIColor, size: CGSize) {
-        self.init(color: color, size: size)
-    }
-    */
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

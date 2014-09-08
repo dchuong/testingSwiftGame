@@ -32,6 +32,7 @@ class WorldGenerator : SKNode {
         }
     }
     
+    //add the platform need to make it continuous 
     func generate () {
         var ground:SKSpriteNode = SKSpriteNode(color: UIColor.greenColor(), size: CGSizeMake(self.scene.size.width, CGFloat(groundSize)))
         // go to bottom of the screen and add the ground

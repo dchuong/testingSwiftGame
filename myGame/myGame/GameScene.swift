@@ -28,6 +28,7 @@ class GameScene: SKScene {
         println(self.world.position.x)
         self.addChild(world)
     
+        // generate the platform
         self.generator = WorldGenerator(generateWorld: world)
         self.addChild(generator)
         self.generator.populate()
@@ -42,6 +43,7 @@ class GameScene: SKScene {
     }
     
     func createPlayer() -> Player {
+        //Add physic to the player and facial textures
         player = Player(texture: nil, color: UIColor.redColor(), size: CGSizeMake(40, 40))
         player.addPhysicsBody()
         var leftEye: SKSpriteNode = SKSpriteNode(color: UIColor.whiteColor(), size: CGSizeMake(5, 5))
