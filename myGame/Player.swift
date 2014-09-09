@@ -36,7 +36,7 @@ class Player : SKSpriteNode {
     }
     
     func start () {
-        var moveRight: SKAction = SKAction.moveByX(1.0, y: 0, duration: 0.05)
+        var moveRight: SKAction = SKAction.moveByX(1.0, y: 0, duration: 0.009)
         var repeatMoveRight:SKAction = SKAction.repeatActionForever(moveRight)
         self.runAction(repeatMoveRight)
     }

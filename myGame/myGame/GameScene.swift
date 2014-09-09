@@ -42,6 +42,21 @@ class GameScene: SKScene {
         centerTheNode(self.player)
     }
     
+    func handleObstacle() {
+        //go through all the child nodes with the name obstacle
+        self.enumerateChildNodesWithName("obstacle", usingBlock: {
+            node, stop in
+            // do something with node or stop
+            if ( node.position.x  < self.player.position.x) {
+                node.name = "obstacle_cancel"
+            }
+        })
+    }
+    
+    func handleCleanObstale() {
+        
+    }
+    
     func createPlayer() -> Player {
         //Add physic to the player and facial textures
         player = Player(texture: nil, color: UIColor.redColor(), size: CGSizeMake(40, 40))
