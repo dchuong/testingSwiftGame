@@ -55,7 +55,7 @@ class WorldGenerator : SKNode {
         obstacle.physicsBody.dynamic = false
         obstacle.name = "obstacle"
         self.world.addChild(obstacle)
-        self.currentObstacle = self.currentObstacle + 200
+        self.currentObstacle = self.currentObstacle + 250
         
     }
     

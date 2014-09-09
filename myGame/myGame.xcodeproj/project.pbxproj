@@ -16,6 +16,7 @@
 		4957190F19AFC6E50006552D /* myGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957190E19AFC6E50006552D /* myGameTests.swift */; };
 		4957192119AFDD750006552D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957192019AFDD750006552D /* Player.swift */; };
 		49CFCCF119BE505A000BA1BC /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */; };
+		49F1831919BFA73400AD0BFA /* PointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1831819BFA73400AD0BFA /* PointLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		4957190E19AFC6E50006552D /* myGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myGameTests.swift; sourceTree = "<group>"; };
 		4957192019AFDD750006552D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = ../Player.swift; sourceTree = "<group>"; };
 		49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldGenerator.swift; path = ../WorldGenerator.swift; sourceTree = "<group>"; };
+		49F1831819BFA73400AD0BFA /* PointLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				495718F719AFC6E50006552D /* AppDelegate.swift */,
 				495718F919AFC6E50006552D /* GameScene.sks */,
 				495718FB19AFC6E50006552D /* GameScene.swift */,
+				49F1831819BFA73400AD0BFA /* PointLabel.swift */,
 				4957192019AFDD750006552D /* Player.swift */,
 				49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */,
 				495718FD19AFC6E50006552D /* GameViewController.swift */,
@@ -226,6 +229,7 @@
 				49CFCCF119BE505A000BA1BC /* WorldGenerator.swift in Sources */,
 				495718FE19AFC6E50006552D /* GameViewController.swift in Sources */,
 				495718F819AFC6E50006552D /* AppDelegate.swift in Sources */,
+				49F1831919BFA73400AD0BFA /* PointLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

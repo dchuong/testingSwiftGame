@@ -36,28 +36,54 @@ class GameScene: SKScene {
         // add the player
         player = createPlayer()
         world.addChild(player)
+        
+        
+        var pointLabel: PointLabel = PointLabel(fontNamed: "Arial")
+        pointLabel.position = CGPointMake(0,100)
+        self.addChild(pointLabel)
+
     }
     
     override func didSimulatePhysics() {
         centerTheNode(self.player)
+        handlePoints()
         handleObstacle()
+
+    }
+    
+    func handlePoints() {
+        self.world.enumerateChildNodesWithName("obstacle", usingBlock: {
+            node, stop in
+            // do something with node or stop
+            if ( node.position.x  < self.player.position.x) {
+                var pointLabel: PointLabel = self.childNodeWithName("PointLabel") as PointLabel
+                pointLabel.addPoint()
+            }
+        })
     }
     
     func handleObstacle() {
         //go through all the child nodes with the name obstacle
         self.world.enumerateChildNodesWithName("obstacle", usingBlock: {
             node, stop in
-            println("go ")
             // do something with node or stop
             if ( node.position.x  < self.player.position.x) {
+                println("here")
                 node.name = "obstacle_cancel"
                 self.generator.generate()
             }
         })
     }
     
+    // need work
     func handleCleanObstale() {
-        
+        self.world.enumerateChildNodesWithName("obstacle_cancel", usingBlock: {
+            node, stop in
+            // do something with node or stop
+            if ( node.position.x  < self.player.position.x - self.frame.size.width/2 - node.frame.size.width/2) {
+                
+            }
+        })
     }
     
     func createPlayer() -> Player {
