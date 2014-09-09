@@ -11,7 +11,7 @@ import SpriteKit
 
 class Player : SKSpriteNode {
     
-
+    let duration: Double = 0.005
     override init(texture: SKTexture?,  color: UIColor?,  size: CGSize)
     {
         super.init(texture: texture, color: color, size: size)
@@ -36,7 +36,7 @@ class Player : SKSpriteNode {
     }
     
     func start () {
-        var moveRight: SKAction = SKAction.moveByX(1.0, y: 0, duration: 0.009)
+        var moveRight: SKAction = SKAction.moveByX(1.0, y: 0, duration: duration)
         var repeatMoveRight:SKAction = SKAction.repeatActionForever(moveRight)
         self.runAction(repeatMoveRight)
     }

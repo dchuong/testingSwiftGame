@@ -48,7 +48,7 @@ class WorldGenerator : SKNode {
         self.currentGroundX = Double(self.currentGroundX) + Double(ground.frame.size.width)
         
         //obstacle
-        var obstacle:SKSpriteNode = SKSpriteNode(color: UIColor.blueColor(), size: CGSizeMake(40, 70))
+        var obstacle:SKSpriteNode = SKSpriteNode(color: getRandomColor(), size: CGSizeMake(40, 70))
         obstacle.position = CGPointMake(CGFloat(self.currentObstacle), ground.position.y + ground.frame.size.height/2
                             + obstacle.frame.size.height/2)
         obstacle.physicsBody = SKPhysicsBody(rectangleOfSize: obstacle.size)
@@ -59,4 +59,11 @@ class WorldGenerator : SKNode {
         
     }
     
+    func getRandomColor() -> UIColor {
+        var hue: CGFloat = CGFloat(Double(arc4random() % 256) / 256.0 )  //  0.0 to 1.0
+        var saturation: CGFloat = CGFloat((Double(arc4random() % 128) / 256.0) + 0.5)
+        var brightness: CGFloat = CGFloat((Double(arc4random() % 128) / 256.0) + 0.5)
+        var color: UIColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
+        return color
+    }
 }

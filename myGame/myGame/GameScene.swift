@@ -40,15 +40,18 @@ class GameScene: SKScene {
     
     override func didSimulatePhysics() {
         centerTheNode(self.player)
+        handleObstacle()
     }
     
     func handleObstacle() {
         //go through all the child nodes with the name obstacle
-        self.enumerateChildNodesWithName("obstacle", usingBlock: {
+        self.world.enumerateChildNodesWithName("obstacle", usingBlock: {
             node, stop in
+            println("go ")
             // do something with node or stop
             if ( node.position.x  < self.player.position.x) {
                 node.name = "obstacle_cancel"
+                self.generator.generate()
             }
         })
     }
