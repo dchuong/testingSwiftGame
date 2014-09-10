@@ -21,13 +21,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isStarted: Bool! = false
     var isGameOver: Bool! = false
     var generator: WorldGenerator!
-    let fontType:String = "Arial"
+    let FONT_TYPE:String = "Arial"
+    let FONT_SIZE:CGFloat = 24 as CGFloat
     
     override func didMoveToView(view: SKView) {
         let groundSize:Int = 50
         //initial anchor point start at the bottom left of the screen (make anchor point to the middle)
+        
         self.anchorPoint = CGPointMake(0.5, 0.5)
-        self.backgroundColor = SKColor.blackColor()
+        self.backgroundColor = SKColor(red: 0.684, green: 0.9, blue: 0.8964, alpha: 1.0)
         self.physicsWorld.contactDelegate = self
         
         self.world = SKNode()
@@ -43,11 +45,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player = createPlayer()
         world.addChild(player)
         
-        
-        var pointLabel: PointLabel = PointLabel(fontNamed: fontType)
+        // labels
+        var pointLabel: PointLabel = PointLabel(fontNamed: FONT_TYPE)
         pointLabel.position = CGPointMake(0,100)
         self.addChild(pointLabel)
-
+        
+        var startLabel: SKLabelNode = SKLabelNode(fontNamed: FONT_TYPE)
+        startLabel.text = "Tap to Start"
+        startLabel.fontSize = FONT_SIZE
+        startLabel.name = "startLabel"
+        startLabel.position = CGPointMake(0, 35)
+        self.addChild(startLabel)
+        pulseAnimation(startLabel)
+        
+        loadClouds()
     }
     
     override func didSimulatePhysics() {
@@ -111,11 +122,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func centerTheNode(node: SKNode) {
         var positionInScene: CGPoint = self.convertPoint(node.position, fromNode: node.parent)
-        self.world.position = CGPointMake(self.world.position.x - positionInScene.x, self.world.position.y - positionInScene.y)
+        self.world.position = CGPointMake(self.world.position.x - positionInScene.x, 0)
     }
 
     func start () {
-        println("start")
+        self.childNodeWithName("startLabel").removeFromParent()
         self.isStarted = true
         player.start()
     }
@@ -127,14 +138,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func gameOver() {
         self.isGameOver = true
-        var gameOverLabel: SKLabelNode = SKLabelNode(fontNamed: fontType)
+        var gameOverLabel: SKLabelNode = SKLabelNode(fontNamed: FONT_TYPE)
         gameOverLabel.text = "Game Over"
         gameOverLabel.position = CGPointMake(0, 50)
+        
+        var resetLabel: SKLabelNode = SKLabelNode(fontNamed: FONT_TYPE)
+        resetLabel.text = "Tap to Reset"
+        resetLabel.fontSize = FONT_SIZE
+        resetLabel.name = "resetLabel"
+        resetLabel.position = CGPointMake(0, 10)
+        self.addChild(resetLabel)
         self.addChild(gameOverLabel)
+        pulseAnimation(resetLabel)
         player.stop()
         
     }
-    
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
@@ -154,6 +172,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact!) {
-        //gameOver()
+        gameOver()
+    }
+    
+    /*         ANIMATION & BACKGROUND          */
+    func pulseAnimation(node:SKNode) {
+        var disappear: SKAction = SKAction.fadeAlphaTo(0.0, duration: 0.7)
+        var appear: SKAction = SKAction.fadeAlphaTo(1.0, duration: 0.7)
+        var pulseAction: SKAction = SKAction.sequence([disappear,appear])
+        node.runAction(SKAction.repeatActionForever(pulseAction))
+    }
+    
+    func loadClouds() {
+        var cloud: SKShapeNode = SKShapeNode()
+        //create the shape
+        cloud.path = UIBezierPath(ovalInRect: CGRectMake(90, 10, 100, 40)).CGPath
+        cloud.fillColor = UIColor.grayColor()
+        cloud.strokeColor = UIColor.blackColor()
+        self.world.addChild(cloud)
+        
     }
 }
