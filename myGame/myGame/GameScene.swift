@@ -29,7 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //initial anchor point start at the bottom left of the screen (make anchor point to the middle)
         
         self.anchorPoint = CGPointMake(0.5, 0.5)
-        self.backgroundColor = SKColor(red: 0.684, green: 0.9, blue: 0.8964, alpha: 1.0)
+        self.backgroundColor = SKColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         self.physicsWorld.contactDelegate = self
         
         self.world = SKNode()
@@ -46,9 +46,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         world.addChild(player)
         
         // labels
-        var pointLabel: PointLabel = PointLabel(fontNamed: FONT_TYPE)
-        pointLabel.position = CGPointMake(0,100)
-        self.addChild(pointLabel)
+        loadScoreLabels()
+        loadClouds()
         
         var startLabel: SKLabelNode = SKLabelNode(fontNamed: FONT_TYPE)
         startLabel.text = "Tap to Start"
@@ -57,8 +56,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         startLabel.position = CGPointMake(0, 35)
         self.addChild(startLabel)
         pulseAnimation(startLabel)
+
         
-        loadClouds()
     }
     
     override func didSimulatePhysics() {
@@ -73,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node, stop in
             // do something with node or stop
             if ( node.position.x  < self.player.position.x) {
-                var pointLabel: PointLabel = self.childNodeWithName("PointLabel") as PointLabel
+                var pointLabel: PointLabel = self.childNodeWithName("pointLabel") as PointLabel
                 pointLabel.addPoint()
             }
         })
@@ -151,7 +150,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(gameOverLabel)
         pulseAnimation(resetLabel)
         player.stop()
+        updateHighScore()
         
+    }
+    
+    func updateHighScore() {
+        var pointLabel: PointLabel = self.childNodeWithName("pointLabel") as PointLabel
+        var highScoreLabel: PointLabel = self.childNodeWithName("highScoreLabel") as PointLabel
+        
+        if(pointLabel.number > highScoreLabel.number) {
+            highScoreLabel.setPoints(pointLabel.number)
+            var gameData: GameData = GameData()
+            gameData.highScore = pointLabel.number
+            gameData.save()
+        }
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -175,10 +187,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOver()
     }
     
-    /*         ANIMATION & BACKGROUND          */
+    /*         ANIMATIONS / BACKGROUND / LABELS         */
     func pulseAnimation(node:SKNode) {
-        var disappear: SKAction = SKAction.fadeAlphaTo(0.0, duration: 0.7)
-        var appear: SKAction = SKAction.fadeAlphaTo(1.0, duration: 0.7)
+        var disappear: SKAction = SKAction.fadeAlphaTo(0.0, duration: 0.8)
+        var appear: SKAction = SKAction.fadeAlphaTo(1.0, duration: 0.8)
         var pulseAction: SKAction = SKAction.sequence([disappear,appear])
         node.runAction(SKAction.repeatActionForever(pulseAction))
     }
@@ -186,10 +198,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func loadClouds() {
         var cloud: SKShapeNode = SKShapeNode()
         //create the shape
-        cloud.path = UIBezierPath(ovalInRect: CGRectMake(90, 10, 100, 40)).CGPath
+        cloud.path = UIBezierPath(ovalInRect: CGRectMake(90, -10, 100, 40)).CGPath
         cloud.fillColor = UIColor.grayColor()
         cloud.strokeColor = UIColor.blackColor()
         self.world.addChild(cloud)
+        
+        var cloud2: SKShapeNode = SKShapeNode()
+        //create the shape
+        cloud2.path = UIBezierPath(ovalInRect: CGRectMake(-200, 25, 100, 40)).CGPath
+        cloud2.fillColor = UIColor.grayColor()
+        cloud2.strokeColor = UIColor.blackColor()
+        self.world.addChild(cloud2)
+    }
+    
+    func loadScoreLabels() {
+        var pointLabel: PointLabel = PointLabel(fontNamed: FONT_TYPE)
+        pointLabel.position = CGPointMake(-200,100)
+        pointLabel.name = "pointLabel"
+        self.addChild(pointLabel)
+        
+        var highScoreLabel: PointLabel = PointLabel(fontNamed: FONT_TYPE)
+        highScoreLabel.name = "highScoreLabel"
+        highScoreLabel.position = CGPointMake(200, 100)
+        self.addChild(highScoreLabel)
+        
+        var bestLabel: SKLabelNode = SKLabelNode(fontNamed: FONT_TYPE)
+        bestLabel.text = "Best: "
+        bestLabel.position = CGPointMake(-65, 0)
+        highScoreLabel.addChild(bestLabel)
+        
+        var gameData:GameData = GameData()
+        gameData.load()
+        highScoreLabel.setPoints(gameData.highScore)
+        
         
     }
 }

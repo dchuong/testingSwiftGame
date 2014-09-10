@@ -13,7 +13,7 @@ class PointLabel :SKLabelNode {
     var number: Int = 0
     override init() {
         super.init()
-        self.name = "PointLabel"
+    
     }
     
     override init(fontNamed fontName: String!) {
@@ -27,6 +27,11 @@ class PointLabel :SKLabelNode {
     
     func addPoint() {
         self.number++
+        self.text = String(self.number)
+    }
+    
+    func setPoints(point: Int) {
+        number = point
         self.text = String(self.number)
     }
     

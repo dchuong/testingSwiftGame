@@ -17,6 +17,7 @@
 		4957192119AFDD750006552D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957192019AFDD750006552D /* Player.swift */; };
 		49CFCCF119BE505A000BA1BC /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */; };
 		49F1831919BFA73400AD0BFA /* PointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1831819BFA73400AD0BFA /* PointLabel.swift */; };
+		49F1831B19C0FCD400AD0BFA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1831A19C0FCD400AD0BFA /* GameData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		4957192019AFDD750006552D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = ../Player.swift; sourceTree = "<group>"; };
 		49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldGenerator.swift; path = ../WorldGenerator.swift; sourceTree = "<group>"; };
 		49F1831819BFA73400AD0BFA /* PointLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointLabel.swift; sourceTree = "<group>"; };
+		49F1831A19C0FCD400AD0BFA /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,12 +88,13 @@
 			isa = PBXGroup;
 			children = (
 				495718F719AFC6E50006552D /* AppDelegate.swift */,
+				49F1831A19C0FCD400AD0BFA /* GameData.swift */,
 				495718F919AFC6E50006552D /* GameScene.sks */,
 				495718FB19AFC6E50006552D /* GameScene.swift */,
-				49F1831819BFA73400AD0BFA /* PointLabel.swift */,
-				4957192019AFDD750006552D /* Player.swift */,
-				49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */,
 				495718FD19AFC6E50006552D /* GameViewController.swift */,
+				4957192019AFDD750006552D /* Player.swift */,
+				49F1831819BFA73400AD0BFA /* PointLabel.swift */,
+				49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */,
 				495718FF19AFC6E50006552D /* Main.storyboard */,
 				4957190219AFC6E50006552D /* Images.xcassets */,
 				495718F519AFC6E50006552D /* Supporting Files */,
@@ -228,6 +231,7 @@
 				495718FC19AFC6E50006552D /* GameScene.swift in Sources */,
 				49CFCCF119BE505A000BA1BC /* WorldGenerator.swift in Sources */,
 				495718FE19AFC6E50006552D /* GameViewController.swift in Sources */,
+				49F1831B19C0FCD400AD0BFA /* GameData.swift in Sources */,
 				495718F819AFC6E50006552D /* AppDelegate.swift in Sources */,
 				49F1831919BFA73400AD0BFA /* PointLabel.swift in Sources */,
 			);
