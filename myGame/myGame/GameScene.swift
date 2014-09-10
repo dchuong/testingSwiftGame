@@ -8,21 +8,27 @@
 
 import SpriteKit
 
+enum ColliderType: UInt32 {
+    case playerCate = 1
+    case obstacleCate = 2
+    case groundCate = 4
+}
 
-
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player:Player!
     var world: SKNode!
     var isStarted: Bool! = false
     var isGameOver: Bool! = false
     var generator: WorldGenerator!
+    let fontType:String = "Arial"
     
     override func didMoveToView(view: SKView) {
         let groundSize:Int = 50
         //initial anchor point start at the bottom left of the screen (make anchor point to the middle)
         self.anchorPoint = CGPointMake(0.5, 0.5)
         self.backgroundColor = SKColor.blackColor()
+        self.physicsWorld.contactDelegate = self
         
         self.world = SKNode()
         println(self.world.position.x)
@@ -38,7 +44,7 @@ class GameScene: SKScene {
         world.addChild(player)
         
         
-        var pointLabel: PointLabel = PointLabel(fontNamed: "Arial")
+        var pointLabel: PointLabel = PointLabel(fontNamed: fontType)
         pointLabel.position = CGPointMake(0,100)
         self.addChild(pointLabel)
 
@@ -115,13 +121,20 @@ class GameScene: SKScene {
     }
     
     func clear() {
-        println("clear")
-        
+        var gameScene: GameScene = GameScene(size: self.frame.size)
+        self.view.presentScene(gameScene)
     }
     
     func gameOver() {
-        println("game over")
+        self.isGameOver = true
+        var gameOverLabel: SKLabelNode = SKLabelNode(fontNamed: fontType)
+        gameOverLabel.text = "Game Over"
+        gameOverLabel.position = CGPointMake(0, 50)
+        self.addChild(gameOverLabel)
+        player.stop()
+        
     }
+    
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
@@ -138,5 +151,9 @@ class GameScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact!) {
+        //gameOver()
     }
 }

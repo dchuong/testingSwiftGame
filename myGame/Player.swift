@@ -24,6 +24,8 @@ class Player : SKSpriteNode {
     
     func addPhysicsBody() {
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
+        self.physicsBody.categoryBitMask = ColliderType.playerCate.toRaw()
+        self.physicsBody.contactTestBitMask = ColliderType.obstacleCate.toRaw() | ~ColliderType.groundCate.toRaw()
     }
     
     func walkRight() {
@@ -31,13 +33,17 @@ class Player : SKSpriteNode {
         self.runAction(right)
     }
     
-    func jump () {
+    func jump() {
         self.physicsBody.applyImpulse(CGVector(0,40))
     }
     
-    func start () {
+    func start() {
         var moveRight: SKAction = SKAction.moveByX(1.0, y: 0, duration: duration)
         var repeatMoveRight:SKAction = SKAction.repeatActionForever(moveRight)
         self.runAction(repeatMoveRight)
+    }
+    
+    func stop() {
+        self.removeAllActions()
     }
 }

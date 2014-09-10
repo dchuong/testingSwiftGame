@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-  var currentGroundX: Double!
+var currentGroundX: Double!
 
 class WorldGenerator : SKNode {
     var currentGroundX: Double!
@@ -41,6 +41,7 @@ class WorldGenerator : SKNode {
         ground.position = CGPointMake(CGFloat(self.currentGroundX), -self.scene.size.height/2 + ground.frame.size.height/2)
         // adding physics
         ground.physicsBody = SKPhysicsBody(rectangleOfSize: ground.size)
+        ground.physicsBody.categoryBitMask = ColliderType.groundCate.toRaw()
         ground.physicsBody.dynamic = false
         ground.name = "ground"
         self.world.addChild(ground)
@@ -48,10 +49,11 @@ class WorldGenerator : SKNode {
         self.currentGroundX = Double(self.currentGroundX) + Double(ground.frame.size.width)
         
         //obstacle
-        var obstacle:SKSpriteNode = SKSpriteNode(color: getRandomColor(), size: CGSizeMake(40, 70))
+        var obstacle:SKSpriteNode = SKSpriteNode(color: getRandomColor(), size: CGSizeMake(40, 55))
         obstacle.position = CGPointMake(CGFloat(self.currentObstacle), ground.position.y + ground.frame.size.height/2
                             + obstacle.frame.size.height/2)
         obstacle.physicsBody = SKPhysicsBody(rectangleOfSize: obstacle.size)
+        obstacle.physicsBody.categoryBitMask = ColliderType.obstacleCate.toRaw()
         obstacle.physicsBody.dynamic = false
         obstacle.name = "obstacle"
         self.world.addChild(obstacle)
