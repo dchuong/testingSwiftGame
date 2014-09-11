@@ -184,7 +184,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact!) {
-        gameOver()
+        if(contact.bodyA.node.name == "ground" || contact.bodyB.node.name == "ground") {
+            self.player.onGround()
+        }
+        else {
+            gameOver()
+        }
     }
     
     /*         ANIMATIONS / BACKGROUND / LABELS         */

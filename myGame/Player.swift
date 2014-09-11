@@ -12,6 +12,8 @@ import SpriteKit
 class Player : SKSpriteNode {
     
     let duration: Double = 0.005
+    var isJumping: Bool = false
+    
     override init(texture: SKTexture?,  color: UIColor?,  size: CGSize)
     {
         super.init(texture: texture, color: color, size: size)
@@ -25,7 +27,7 @@ class Player : SKSpriteNode {
     func addPhysicsBody() {
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size)
         self.physicsBody.categoryBitMask = ColliderType.playerCate.toRaw()
-        self.physicsBody.contactTestBitMask = ColliderType.obstacleCate.toRaw() | ~ColliderType.groundCate.toRaw()
+        self.physicsBody.contactTestBitMask = ColliderType.obstacleCate.toRaw() | ColliderType.groundCate.toRaw()
     }
     
     func walkRight() {
@@ -34,7 +36,15 @@ class Player : SKSpriteNode {
     }
     
     func jump() {
-        self.physicsBody.applyImpulse(CGVector(0,40))
+        if (isJumping == false) {
+            self.physicsBody.applyImpulse(CGVector(0,40))
+            //self.runAction(SKAction.playSoundFileNamed("jump.mp3", waitForCompletion: false))
+            self.isJumping = true
+        }
+    }
+    
+    func onGround() {
+        self.isJumping = false
     }
     
     func start() {

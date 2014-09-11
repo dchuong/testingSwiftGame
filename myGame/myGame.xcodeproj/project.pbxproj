@@ -18,6 +18,7 @@
 		49CFCCF119BE505A000BA1BC /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */; };
 		49F1831919BFA73400AD0BFA /* PointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1831819BFA73400AD0BFA /* PointLabel.swift */; };
 		49F1831B19C0FCD400AD0BFA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F1831A19C0FCD400AD0BFA /* GameData.swift */; };
+		49F1831F19C23F2100AD0BFA /* gateofhell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49F1831E19C23F2100AD0BFA /* gateofhell.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		49CFCCF019BE505A000BA1BC /* WorldGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldGenerator.swift; path = ../WorldGenerator.swift; sourceTree = "<group>"; };
 		49F1831819BFA73400AD0BFA /* PointLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointLabel.swift; sourceTree = "<group>"; };
 		49F1831A19C0FCD400AD0BFA /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		49F1831E19C23F2100AD0BFA /* gateofhell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gateofhell.mp3; path = ../../../../Downloads/gateofhell.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		495718F519AFC6E50006552D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				49F1831E19C23F2100AD0BFA /* gateofhell.mp3 */,
 				495718F619AFC6E50006552D /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -210,6 +213,7 @@
 				4957190319AFC6E50006552D /* Images.xcassets in Resources */,
 				495718FA19AFC6E50006552D /* GameScene.sks in Resources */,
 				4957190119AFC6E50006552D /* Main.storyboard in Resources */,
+				49F1831F19C23F2100AD0BFA /* gateofhell.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
